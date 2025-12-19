@@ -38,3 +38,6 @@ body {
     background: #22d3ee;
     color: #09090b;
 }
+html {
+  scroll-behavior: smooth;
+}

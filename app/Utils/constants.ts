@@ -21,20 +21,9 @@ export const PROJECTS: Project[] = [
     impact: 'Improved answer reliability for technical queries by prioritizing retrieval quality over raw model capability.',
     tech: ['Next.js', 'TypeScript', 'Qdrant', 'LangChain', 'OpenAI'],
     lessons: 'Good retrieval and clean data matter more than larger models for accuracy.',
-    imageUrl: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=1200&h=675',
+    imageUrl: '/rag-system.png',
     githubUrl: 'https://github.com/IamVatsal',
     link: 'https://rag-tech-knowledge.vercel.app/'
-  },
-  {
-    id: 'servo-robotics',
-    title: 'Humanoid Servo Control Logic',
-    problem: 'Synchronizing high-degree-of-freedom servos in real-time requires precise timing and efficient protocol handling.',
-    solution: 'Coordinating multiple servo motors in real time introduces timing jitter, mechanical constraints, and communication overhead.',
-    impact: 'Achieved smoother joint movement and predictable motion behavior under real hardware constraints.',
-    tech: ['Python', 'Arduino', 'Robotics', 'Adafruit Servos'],
-    lessons: 'Hardware-software integration is a constant battle with jitter and physical constraints.',
-    imageUrl: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=1200&h=675',
-    githubUrl: 'https://github.com/IamVatsal'
   },
   {
     id: 'deaths-job',
