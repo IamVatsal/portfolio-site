@@ -20,7 +20,7 @@ export default function Home() {
 
   return (
     <div className="selection:bg-cyan-500/30">
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4 ${scrolled ? 'bg-zinc-950/80 backdrop-blur-md border-b border-zinc-800' : 'bg-transparent'}`}>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4 ${scrolled ? 'backdrop-blur-sm border-b rounded-2xl border-zinc-800 mx-[10%] mt-2' : 'bg-transparent'}`}>
         <div className="max-w-6xl mx-auto flex justify-between items-center">
           <div className="mono font-bold text-lg text-zinc-100 tracking-tighter">
             VATSAL<span className="text-cyan-500">_</span>
