@@ -4,12 +4,13 @@ import { Project, SkillGroup } from './types';
 export const PROJECTS: Project[] = [
   {
     id: 'nn-from-scratch',
-    title: 'Autograd Engine & Neural Network Framework',
+    title: 'NanoNet - Neural Network From Scratch (NumPy Only)',
     problem: 'High-level ML frameworks hide how backpropagation, gradient flow, and memory usage actually work, making it difficult to reason about performance and correctness.',
     solution: 'Implemented a scalar-based automatic differentiation engine and built a small neural network framework on top of it, including forward/backward passes, activation functions, and optimizers.',
     impact: 'Gained a concrete understanding of computational graphs, gradient propagation, and why matrix operations dominate ML performance.',
     tech: ['Python', 'NumPy', 'Calculus', 'Linear Algebra'],
     lessons: 'Most ML performance gains come from optimizing data layout and matrix operations, not from model architecture tweaks.',
+    imageUrl: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=1200&h=675',
     githubUrl: 'https://github.com/IamVatsal'
   },
   {
@@ -20,7 +21,9 @@ export const PROJECTS: Project[] = [
     impact: 'Improved answer reliability for technical queries by prioritizing retrieval quality over raw model capability.',
     tech: ['Next.js', 'TypeScript', 'Qdrant', 'LangChain', 'OpenAI'],
     lessons: 'Good retrieval and clean data matter more than larger models for accuracy.',
-    githubUrl: 'https://github.com/IamVatsal'
+    imageUrl: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=1200&h=675',
+    githubUrl: 'https://github.com/IamVatsal',
+    link: 'https://rag-tech-knowledge.vercel.app/'
   },
   {
     id: 'servo-robotics',
@@ -30,6 +33,7 @@ export const PROJECTS: Project[] = [
     impact: 'Achieved smoother joint movement and predictable motion behavior under real hardware constraints.',
     tech: ['Python', 'Arduino', 'Robotics', 'Adafruit Servos'],
     lessons: 'Hardware-software integration is a constant battle with jitter and physical constraints.',
+    imageUrl: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=1200&h=675',
     githubUrl: 'https://github.com/IamVatsal'
   },
   {
@@ -44,6 +48,7 @@ export const PROJECTS: Project[] = [
     tech: ['Python', 'Pygame-CE', 'OOP', 'Game Physics'],
     lessons:
       'Simple games are a great way to learn real-time loops, state machines, and physics without the overhead of a full engine.',
+    imageUrl: 'https://github.com/user-attachments/assets/dacf298d-1135-41b5-8e59-7bb4df63ec72',
     githubUrl: 'https://github.com/IamVatsal/Deaths-Job'
   }
 ];
@@ -51,7 +56,7 @@ export const PROJECTS: Project[] = [
 export const SKILLS: SkillGroup[] = [
   {
     category: 'Languages',
-    skills: ['C', 'C++', 'Python', 'TypeScript', 'SQL']
+    skills: ['C', 'Python', 'TypeScript', 'C++', 'SQL']
   },
   {
     category: 'Web & Backend',

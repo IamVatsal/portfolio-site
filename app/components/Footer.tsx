@@ -7,7 +7,7 @@ const Footer: React.FC = () => {
       <div className="max-w-5xl mx-auto px-6 text-center">
         <h2 className="text-4xl md:text-5xl font-bold mb-8 text-zinc-100 tracking-tight">Get in touch.</h2>
         <p className="text-zinc-400 max-w-lg mx-auto mb-12 leading-relaxed">
-          I am always open to discussing technical architecture, low-level systems, or potential collaborations on complex software.
+          I'm always open to conversations about system design, low-level details, or building things that are interesting.
         </p>
         
         <div className="flex justify-center gap-8 mb-16">

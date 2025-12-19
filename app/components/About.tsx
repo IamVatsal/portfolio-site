@@ -6,15 +6,17 @@ const About: React.FC = () => {
   return (
     <Section id="about" title="01. About Me">
       <div className="grid grid-cols-1 md:grid-cols-2 gap-12 text-zinc-400 leading-relaxed">
+        {/* <span className="text-zinc-200 font-medium"> */}
         <div>
+          <p className='mb-6'>I'm a <span className="text-zinc-200 font-medium">Computer Engineering</span> student who enjoys understanding how systems work beneath the abstractions.</p>
           <p className="mb-6">
-            I approach engineering from a <span className="text-zinc-200 font-medium">first-principles</span> perspective. Whether it's debugging a kernel module or architecting a distributed web application, I start by asking how the underlying machine handles the task.
+            I like building things from <span className="text-zinc-200 font-medium">scratch</span>. not because frameworks are bad, but because reimplementing core ideas exposes trade-offs, edge cases, and constraints that are easy to miss otherwise. That approach has shaped how I learn everything from <span className="text-zinc-200 font-medium">neural networks and backend services</span> to <span className="text-zinc-200 font-medium">games and embedded systems</span>.
           </p>
           <p className="mb-6">
-            My journey began with a curiosity for how software interacts with physical hardware. This led me to study Computer Engineering, where I bridge the gap between abstract algorithms and real-world silicon.
+            I'm comfortable working across the stack, but I'm especially interested in <span className="text-zinc-200 font-medium">core CS concepts, system behavior, and real-world constraints</span>—performance, timing, memory, and reliability. Projects that combine logic with physical or runtime limitations (like robotics, real-time games, or low-level AI implementations) tend to teach me the most.
           </p>
           <p>
-            I believe the best engineers are interdisciplinary thinkers who can navigate the entire stack, from memory registers to modern browser environments.
+            I value clarity over buzzwords, and depth over breadth. My goal is to <span className="text-zinc-200 font-medium">keep improving my fundamentals</span> while building practical systems that behave predictably and are easy to reason about
           </p>
         </div>
         <div className="space-y-6">

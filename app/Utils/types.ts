@@ -7,6 +7,7 @@ export interface Project {
   impact: string;
   tech: string[];
   lessons: string;
+  imageUrl: string;
   githubUrl?: string;
   link?: string;
 }
