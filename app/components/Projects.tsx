@@ -24,12 +24,14 @@ const Projects: React.FC = () => {
                 <div className="lg:col-span-7 space-y-8">
                   <div className="space-y-4">
                     <div className="flex items-center gap-4">
-                      <span className="mono text-[10px] text-zinc-600">[{String(idx + 1).padStart(2, '0')}]</span>
+                      <span className="mono text-[10px] text-cyan-500">[{String(idx + 1).padStart(2, '0')}]</span>
+                      <a href={project.githubUrl} target="_blank" className="z-10 flex-1">
                       <h3 
                         className="text-3xl font-bold text-zinc-100 tracking-tight cursor-default transition-colors hover:text-cyan-400"
                       >
                         {project.title}
                       </h3>
+                      </a>
                     </div>
                     
                     <div className="flex flex-wrap gap-2">
@@ -93,6 +95,7 @@ const Projects: React.FC = () => {
                     <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: 'linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
                     
                     {/* The Image (Appears on Hover) */}
+                    <a href={project.githubUrl} target="_blank" className="z-10 absolute inset-0">
                     <div className={`absolute inset-0 transition-all duration-700 ease-in-out ${hoveredProject === project.id ? 'opacity-100 scale-100 filter-none' : 'opacity-100 scale-110 filter grayscale contrast-150 brightness-75'}`}>
                       <img 
                         src={project.imageUrl} 
@@ -104,6 +107,7 @@ const Projects: React.FC = () => {
                       {/* Scanline Effect */}
                       <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.02),rgba(0,255,0,0.01),rgba(0,0,255,0.02))] z-20 bg-[length:100%_2px,3px_100%]"></div>
                     </div>
+                    </a>
                   </div>
                   
                   {/* Insight Metadata below image */}
