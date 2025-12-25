@@ -36,7 +36,7 @@ const Projects: React.FC = () => {
                     
                     <div className="flex flex-wrap gap-2">
                       {project.tech.map(t => (
-                        <span key={t} className="mono text-[9px] px-2 py-0.5 border border-zinc-800 text-zinc-500 rounded lowercase">
+                        <span key={t} className="mono text-[9px] px-2 py-0.5 border border-zinc-800 text-zinc-500 rounded lowercase hover:border-cyan-400 hover:text-cyan-400 transition-colors hover:scale-110  hover:duration-300">
                           #{t.replace(/\s+/g, '')}
                         </span>
                       ))}

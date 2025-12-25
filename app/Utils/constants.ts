@@ -11,7 +11,7 @@ export const PROJECTS: Project[] = [
     tech: ['Python', 'NumPy', 'Calculus', 'Linear Algebra'],
     lessons: 'Most ML performance gains come from optimizing data layout and matrix operations, not from model architecture tweaks.',
     imageUrl: 'https://images.unsplash.com/photo-1635070041078-e363dbe005cb?auto=format&fit=crop&q=80&w=1200&h=675',
-    githubUrl: 'https://github.com/IamVatsal'
+    githubUrl: 'https://github.com/IamVatsal/NanoNet'
   },
   {
     id: 'rag-system',
@@ -22,8 +22,7 @@ export const PROJECTS: Project[] = [
     tech: ['Next.js', 'TypeScript', 'Qdrant', 'LangChain', 'OpenAI'],
     lessons: 'Good retrieval and clean data matter more than larger models for accuracy.',
     imageUrl: '/rag-system.png',
-    githubUrl: 'https://github.com/IamVatsal',
-    link: 'https://rag-tech-knowledge.vercel.app/'
+    githubUrl: 'https://github.com/IamVatsal/NanoBook',
   },
   {
     id: 'deaths-job',

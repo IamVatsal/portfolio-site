@@ -9,18 +9,31 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false);
+  const [isMouseOnNav, setIsMouseOnNav] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setScrolled(window.scrollY > 60);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    const mouseMoveHandler = (e: MouseEvent) => {
+      if (e.clientY < 80 || window.scrollY < 60) {
+        setIsMouseOnNav(true);
+      } else {
+        setIsMouseOnNav(false);
+    }
+    };
+    window.addEventListener('mousemove', mouseMoveHandler);
+    return () => window.removeEventListener('mousemove', mouseMoveHandler);
+  }, []);
+
   return (
     <div className="selection:bg-cyan-500/30">
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4 ${scrolled ? 'max-md:hidden backdrop-blur-sm border-b rounded-2xl border-zinc-800 mx-[10%] mt-2' : 'bg-transparent'}`}>
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4 ${scrolled ? 'max-md:hidden backdrop-blur-sm border-b rounded-2xl border-zinc-800 mx-[20%] mt-2' : 'bg-transparent'} ${isMouseOnNav? ``: `opacity-0`}`}>
         <div className="max-w-6xl mx-auto flex justify-between items-center">
           <a href="/" target="_self">
           <div className="mono font-bold text-lg text-zinc-100 tracking-tighter">
