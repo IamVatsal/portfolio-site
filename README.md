@@ -1,36 +1,34 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Portfolio Site
+
+A minimalist personal portfolio built with Next.js (App Router) showcasing sections for hero, about, skills, projects, philosophy, and contact.
+
+## Tech Stack
+- Next.js 16 / React 19
+- TypeScript
+- Tailwind CSS 4
+
+## Project Structure
+- App shell: [`app/layout.tsx`](app/layout.tsx)
+- Entry page & nav logic: [`app/page.tsx`](app/page.tsx)
+- Sections: [`Hero`](app/components/Hero.tsx), [`About`](app/components/About.tsx), [`Skills`](app/components/Skills.tsx), [`Projects`](app/components/Projects.tsx), [`Philosophy`](app/components/Philosophy.tsx), [`Footer`](app/components/Footer.tsx)
+- Shared layout block: [`Section`](app/components/Section.tsx)
+- Data models: [`types`](app/Utils/types.ts)
+- Content data: [`constants`](app/Utils/constants.ts)
+- Global styles: [`globals.css`](app/globals.css)
+- Config: [`next.config.ts`](next.config.ts), [`tsconfig.json`](tsconfig.json), [`eslint.config.mjs`](eslint.config.mjs), [`postcss.config.mjs`](postcss.config.mjs), [`package.json`](package.json)
 
 ## Getting Started
-
-First, run the development server:
-
-```bash
+```sh
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+# open http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Scripts
+- `npm run dev` — local development
+- `npm run build` — production build
+- `npm run start` — start built app
+- `npm run lint` — lint codebase
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Customization
+Edit section content in [`app/Utils/constants.ts`](app/Utils/constants.ts) and adjust layout/styles in the components under [`app/components`](app/components).
