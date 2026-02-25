@@ -8,69 +8,96 @@ import Footer from "./components/Footer";
 import { useEffect, useState } from "react";
 
 export default function Home() {
-  const [scrolled, setScrolled] = useState(false);
-  const [isMouseOnNav, setIsMouseOnNav] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+    const [isMouseOnNav, setIsMouseOnNav] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 60);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 60);
+        };
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
-  useEffect(() => {
-    const mouseMoveHandler = (e: MouseEvent) => {
-      if (e.clientY < 80 || window.scrollY < 60) {
-        setIsMouseOnNav(true);
-      } else {
-        setIsMouseOnNav(false);
-    }
-    };
-    window.addEventListener('mousemove', mouseMoveHandler);
-    return () => window.removeEventListener('mousemove', mouseMoveHandler);
-  }, []);
+    useEffect(() => {
+        const mouseMoveHandler = (e: MouseEvent) => {
+            if (e.clientY < 80 || window.scrollY < 60) {
+                setIsMouseOnNav(true);
+            } else {
+                setIsMouseOnNav(false);
+            }
+        };
 
-  return (
-    <div className="selection:bg-cyan-500/30">
-      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4 ${scrolled ? 'max-md:hidden backdrop-blur-sm border-b rounded-2xl border-zinc-800 mx-[20%] mt-2' : 'bg-transparent'} ${isMouseOnNav? ``: `opacity-0`}`}>
-        <div className="max-w-6xl mx-auto flex justify-between items-center">
-          <a href="/" target="_self">
-          <div className="mono font-bold text-lg text-zinc-100 tracking-tighter">
-            VATSAL<span className="text-cyan-500">_</span>
-          </div>
-          </a>
-          <div className="hidden md:flex gap-8 items-center">
-        {['About', 'Skills', 'Projects', 'Philosophy', 'Contact'].map(item => (
-          <a 
-            key={item}
-            href={`#${item.toLowerCase()}`}
-            className="mono text-[11px] uppercase tracking-widest text-zinc-500 hover:text-cyan-400 transition-colors"
-          >
-            {item}
-          </a>
-        ))}
-          </div>
+        // Also check scroll position without mouse movement
+        const handleScrollCheck = () => {
+            if (window.scrollY < 60) {
+                setIsMouseOnNav(true);
+            }
+        };
+
+        window.addEventListener('mousemove', mouseMoveHandler);
+        window.addEventListener('scroll', handleScrollCheck);
+        return () => {
+            window.removeEventListener('mousemove', mouseMoveHandler);
+            window.removeEventListener('scroll', handleScrollCheck);
+        };
+    }, []);
+
+    return (
+        <div className="selection:bg-cyan-500/30">
+            <nav
+                className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4 ${scrolled ? 'max-md:hidden backdrop-blur-sm border-b rounded-2xl border-zinc-800 mx-[20%] mt-2' : 'bg-transparent'} ${isMouseOnNav ? `` : `opacity-0`}`}
+            >
+                <div className="max-w-6xl mx-auto flex justify-between items-center">
+                    <a href="/" target="_self">
+                        <div className="mono font-bold text-lg text-zinc-100 tracking-tighter">
+                            VATSAL<span className="text-cyan-500">_</span>
+                        </div>
+                    </a>
+                    <div className="hidden md:flex gap-8 items-center">
+                        {[
+                            'About',
+                            'Skills',
+                            'Projects',
+                            'Philosophy',
+                            'Contact',
+                        ].map((item) => (
+                            <a
+                                key={item}
+                                href={`#${item.toLowerCase()}`}
+                                className="mono text-[11px] uppercase tracking-widest text-zinc-500 hover:text-cyan-400 transition-colors"
+                            >
+                                {item}
+                            </a>
+                        ))}
+                    </div>
+                </div>
+            </nav>
+
+            <main className="bg-zinc-950 text-zinc-100">
+                <Hero />
+                <About />
+                <Skills />
+                <Projects />
+                <Philosophy />
+                <Footer />
+            </main>
+
+            {/* Background elements */}
+            <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden">
+                <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-cyan-900/5 blur-[120px] rounded-full"></div>
+                <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-blue-900/5 blur-[100px] rounded-full"></div>
+
+                {/* Grid pattern overlay */}
+                <div
+                    className="absolute inset-0 opacity-[0.015]"
+                    style={{
+                        backgroundImage:
+                            'radial-gradient(#ffffff 1px, transparent 1px)',
+                        backgroundSize: '40px 40px',
+                    }}
+                ></div>
+            </div>
         </div>
-      </nav>
-
-      <main className="bg-zinc-950 text-zinc-100">
-        <Hero />
-        <About />
-        <Skills />
-        <Projects />
-        <Philosophy />
-        <Footer />
-      </main>
-
-      {/* Background elements */}
-      <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-cyan-900/5 blur-[120px] rounded-full"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-blue-900/5 blur-[100px] rounded-full"></div>
-        
-        {/* Grid pattern overlay */}
-        <div className="absolute inset-0 opacity-[0.015]" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
-      </div>
-    </div>
-  );
+    );
 }
