@@ -1,34 +1,40 @@
-import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import type { Metadata } from 'next';
+import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
+import VantaBackground from './components/VantaBackground';
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+    variable: '--font-geist-sans',
+    subsets: ['latin'],
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+    variable: '--font-geist-mono',
+    subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
-  title: "Vatsal",
-  description: "Vatsal's Personal Portfolio Site",
+    title: 'Vatsal',
+    description: "Vatsal's Personal Portfolio Site",
 };
 
 export default function RootLayout({
-  children,
+    children,
 }: Readonly<{
-  children: React.ReactNode;
+    children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en" data-scroll-behavior="smooth">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
-  );
+    return (
+        <html lang="en" data-scroll-behavior="smooth">
+          <head>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta.js/0.5.24/vanta.net.min.js"></script>
+          </head>
+            <body
+                className={`${geistSans.variable} ${geistMono.variable} antialiased vanta-bg`}
+            >
+              <VantaBackground />
+                {children}
+            </body>
+        </html>
+    );
 }
