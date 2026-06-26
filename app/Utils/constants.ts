@@ -25,7 +25,7 @@ export const PROJECTS: Project[] = [
         lessons:
             'Reliable IoT systems require careful coordination between embedded devices, mobile apps, backend services, and network communication. Hardware reliability and graceful failure handling are just as important as software architecture.',
         imageUrl:
-            'https://github.com/user-attachments/assets/5a6e7ef8-8bf3-48e5-acff-a18de165d2a0',
+            '/SmartHelmet.jpg',
         githubUrl: 'https://github.com/IamVatsal/Smart_Helmet',
     },
     {
@@ -69,7 +69,7 @@ export const PROJECTS: Project[] = [
         lessons:
             'Simple games are a great way to learn real-time loops, state machines, and physics without the overhead of a full engine.',
         imageUrl:
-            'https://github.com/user-attachments/assets/dacf298d-1135-41b5-8e59-7bb4df63ec72',
+            '/DeathJob.gif',
         githubUrl: 'https://github.com/IamVatsal/Deaths-Job',
     },
     {

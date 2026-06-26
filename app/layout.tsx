@@ -26,8 +26,6 @@ export default function RootLayout({
     return (
         <html lang="en" data-scroll-behavior="smooth">
           <head>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/vanta.js/0.5.24/vanta.net.min.js"></script>
           </head>
             <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased vanta-bg`}
