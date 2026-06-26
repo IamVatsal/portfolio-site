@@ -10,15 +10,15 @@ const About: React.FC = () => {
         <div>
           <p className='mb-6'>I'm Vatsal a <span className="text-zinc-200 font-medium">Computer Engineering</span> student who enjoys understanding how systems work beneath the abstractions.</p>
           <p className="mb-6">
-            Many of my projects involve rebuilding core ideas rather than relying entirely on existing frameworks—whether that's implementing automatic differentiation for neural networks, writing real-time game loops, or integrating embedded hardware with backend services. I find that recreating these systems exposes trade-offs that are easy to miss when using high-level abstractions alone.
+            Many of my projects involve <span className="text-zinc-200 font-medium">rebuilding core ideas</span> rather than relying entirely on existing frameworks whether that's <span className="text-zinc-200 font-medium">implementing automatic differentiation for neural networks, writing real-time game loops,</span> or <span className="text-zinc-200 font-medium">integrating embedded hardware with backend services</span>. I find that recreating these systems exposes trade-offs that are easy to miss when using high-level abstractions alone.
             {/* I like building things from <span className="text-zinc-200 font-medium">scratch</span>. not because frameworks are bad, but because reimplementing core ideas exposes trade-offs, edge cases, and constraints that are easy to miss otherwise. That approach has shaped how I learn everything from <span className="text-zinc-200 font-medium">neural networks and backend services</span> to <span className="text-zinc-200 font-medium">games and embedded systems</span>. */}
           </p>
           <p className="mb-6">
-            While I'm comfortable building full-stack applications, I'm increasingly drawn toward systems programming, embedded software, AI infrastructure, and software that interacts closely with hardware or runtime constraints.
+            While I'm comfortable building <span className="text-zinc-200 font-medium">full-stack applications</span>, I'm increasingly drawn toward systems programming, embedded software, AI infrastructure, and software that interacts closely with hardware or runtime constraints.
             {/* I'm comfortable working across the stack, but I'm especially interested in <span className="text-zinc-200 font-medium">core CS concepts, system behavior, and real-world constraints</span>—performance, timing, memory, and reliability. Projects that combine logic with physical or runtime limitations (like robotics, real-time games, or low-level AI implementations) tend to teach me the most. */}
           </p>
           <p>
-            Right now I'm focused on strengthening my understanding of operating systems, networking, embedded software, and machine learning internals while continuing to build projects that expose how these systems behave under real-world constraints.
+            Right now I'm focused on strengthening my understanding of <span className="text-zinc-200 font-medium">Full-Stack Devlopment operating systems, networking, embedded software,</span> and <span className="text-zinc-200 font-medium">machine learning internals</span> while continuing to build projects that expose how these systems behave under real-world constraints.
           </p>
         </div>
         <div className="space-y-6">
