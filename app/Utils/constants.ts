@@ -2,6 +2,33 @@ import { Project, SkillGroup } from './types';
 
 export const PROJECTS: Project[] = [
     {
+        id: 'smart-helmet',
+        title: 'Smart Helmet - IoT Emergency Accident Alert System',
+        problem:
+            'Road accidents often leave victims unable to call for help, delaying emergency response. A lightweight, low-cost system was needed to automatically detect potential accidents and notify emergency contacts.',
+        solution:
+            'Developed the ESP8266 firmware, hardware integration, and FastAPI backend for an IoT-based smart helmet that detects abnormal acceleration using an MPU6050 sensor, provides a cancellation window, and automatically sends emergency email alerts with live location and contact information.',
+        impact:
+            'Built a complete IoT-to-cloud workflow integrating embedded hardware, wireless communication, backend APIs, and a mobile application, demonstrating real-time emergency alert capabilities during a hackathon.',
+        tech: [
+            'ESP8266',
+            'Arduino',
+            'MPU6050',
+            'FastAPI',
+            'Python',
+            'React Native',
+            'Expo',
+            'Firebase',
+            'REST API',
+            'IoT'
+        ],
+        lessons:
+            'Reliable IoT systems require careful coordination between embedded devices, mobile apps, backend services, and network communication. Hardware reliability and graceful failure handling are just as important as software architecture.',
+        imageUrl:
+            'https://github.com/user-attachments/assets/5a6e7ef8-8bf3-48e5-acff-a18de165d2a0',
+        githubUrl: 'https://github.com/IamVatsal/Smart_Helmet',
+    },
+    {
         id: 'nn-from-scratch',
         title: 'NanoNet - Neural Network From Scratch (NumPy Only)',
         problem:
@@ -104,11 +131,21 @@ export const PROJECTS: Project[] = [
 export const SKILLS: SkillGroup[] = [
     {
         category: 'Languages',
-        skills: ['C', 'Python', 'TypeScript', 'C++', 'SQL'],
+        skills: ['C', 'Python', 'TypeScript', 'Java', 'C++', 'SQL'],
     },
     {
         category: 'Web & Backend',
-        skills: ['Next.js', 'React', 'Node.js', 'Express', 'Tailwind'],
+        skills: ['Next.js', 'React', 'Node.js', 'Express', 'FastAPI'],
+    },
+    {
+        category: 'AI & Machine Learning',
+        skills: [
+            'NumPy',
+            'Automatic Differentiation',
+            'RAG',
+            'Vector Search',
+            'LLM APIs',
+        ],
     },
     {
         category: 'Databases',
@@ -117,15 +154,15 @@ export const SKILLS: SkillGroup[] = [
             'MongoDB',
             'SQLite',
             'MySQL',
-            'Qdrant Vector DBs',
+            'Qdrant',
         ],
     },
     {
-        category: 'Systems & Tools',
-        skills: ['Linux/Unix', 'Docker', 'Git', 'Embedded Systems'],
+        category: 'Systems & Infrastructure',
+        skills: ['Linux', 'Docker', 'Git', 'REST API Design','Embedded Systems'],
     },
     {
-        category: 'Interactive Systems',
+        category: 'Systems Concepts',
         skills: [
             'Game Loops',
             'Physics Simulation',
@@ -145,7 +182,7 @@ export const PHILOSOPHY = [
     {
         title: 'Abstractions Leak',
         content:
-            'Reliable systems require knowing what happens underneath the abstraction. I prefer understanding how things work internally rather than treating libraries as black boxes.',
+            'Frameworks are useful, but understanding what\'s happening underneath makes debugging, optimization, and design decisions much easier.',
     },
     {
         title: 'Build to Understand',

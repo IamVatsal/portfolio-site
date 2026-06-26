@@ -113,7 +113,7 @@ const Projects: React.FC = () => {
                   {/* Insight Metadata below image */}
                   <div className="mt-6 flex gap-6">
                     <div className="flex-1">
-                      <h5 className="mono text-[8px] text-zinc-600 uppercase mb-1">Architecture</h5>
+                      <h5 className="mono text-[8px] text-zinc-600 uppercase mb-1">Impact</h5>
                       <p className="text-zinc-500 text-[12px] leading-tight font-light">{project.impact}</p>
                     </div>
                     <div className="flex-1">

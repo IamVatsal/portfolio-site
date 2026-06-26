@@ -25,8 +25,8 @@ const Hero: React.FC = () => {
             </div>
             <p className="text-2xl md:text-3xl text-zinc-400 max-w-2xl leading-relaxed font-light mb-12">
                 Computer Engineering student focused on building{' '}
-                <span className="text-zinc-100">reliable systems</span> and{' '}
-                <span className="text-zinc-100">intelligent software</span>.
+                <span className="text-zinc-100">AI, Embedded,</span> and{' '}
+                <span className="text-zinc-100">Systems Software</span>.
             </p>
             <div className="flex flex-wrap gap-4">
                 <a
