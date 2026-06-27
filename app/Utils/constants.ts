@@ -140,8 +140,8 @@ export const SKILLS: SkillGroup[] = [
     {
         category: 'AI & Machine Learning',
         skills: [
+            'Neural Networks',
             'NumPy',
-            'Automatic Differentiation',
             'RAG',
             'Vector Search',
             'LLM APIs',
