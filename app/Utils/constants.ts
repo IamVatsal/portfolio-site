@@ -49,7 +49,7 @@ export const PROJECTS: Project[] = [
         problem:
             'LLMs tend to hallucinate when answering technical or domain-specific questions without access to verified context.',
         solution:
-            'Built a Retrieval-Augmented Generation pipeline using vector embeddings stored in PostgreSQL (pgvector), ensuring responses are grounded in retrieved documents.',
+            'Built a Retrieval-Augmented Generation pipeline using vector embeddings stored in Qdrant and query rewriting ensuring responses are grounded in retrieved documents.',
         impact: 'Improved answer reliability for technical queries by prioritizing retrieval quality over raw model capability.',
         tech: ['Next.js', 'TypeScript', 'Qdrant', 'LangChain', 'OpenAI'],
         lessons:
