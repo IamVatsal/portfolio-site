@@ -52,7 +52,7 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => {
               className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs mono rounded bg-zinc-900 text-white hover:bg-zinc-800 transition-colors"
             >
               <Printer className="w-3.5 h-3.5" />
-              <span>Save PDF</span>
+              <span>Open PDF</span>
             </button>
             <button
               onClick={onClose}
