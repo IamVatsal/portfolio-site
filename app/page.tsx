@@ -1,106 +1,106 @@
 "use client";
-import Hero from "./components/Hero";
-import About from "./components/About";
-import Skills from "./components/Skills";
-import Projects from "./components/Projects";
-import Philosophy from "./components/Philosophy";
-import Footer from "./components/Footer";
-import { useEffect, useState } from "react";
+import React, { useState, useEffect } from 'react';
+import Navbar from './components/Navbar';
+import Hero from './components/Hero';
+import MarqueeBanner from './components/MarqueeBanner';
+import Projects from './components/Projects';
+import Experience from './components/Experience';
+import Skills from './components/Skills';
+import FieldNotes from './components/FieldNotes';
+import Philosophy from './components/Philosophy';
+import ContactCTA from './components/ContactCTA';
+import Footer from './components/Footer';
+import ProjectModal from './components/ProjectModal';
+import ResumeModal from './components/ResumeModal';
+import NoteModal from './components/NoteModal';
+import { Project, FieldNote } from './Utils/types';
 
-export default function Home() {
+const App: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
-  const [isMouseOnNav, setIsMouseOnNav] = useState(false);
+  const [darkMode, setDarkMode] = useState(false);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [selectedNote, setSelectedNote] = useState<FieldNote | null>(null);
+  const [isResumeOpen, setIsResumeOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 60);
+      setScrolled(window.scrollY > 40);
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
   useEffect(() => {
-    const mouseMoveHandler = (e: MouseEvent) => {
-      if (e.clientY < 80 || window.scrollY < 60) {
-        setIsMouseOnNav(true);
-      } else {
-        setIsMouseOnNav(false);
-      }
-    };
-
-    // Also check scroll position without mouse movement
-    const handleScrollCheck = () => {
-      if (window.scrollY < 60) {
-        setIsMouseOnNav(true);
-      }
-    };
-
-    window.addEventListener("mousemove", mouseMoveHandler);
-    window.addEventListener("scroll", handleScrollCheck);
-    return () => {
-      window.removeEventListener("mousemove", mouseMoveHandler);
-      window.removeEventListener("scroll", handleScrollCheck);
-    };
+    // Check saved theme or match system
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === 'dark') {
+      setDarkMode(true);
+      document.documentElement.classList.add('dark');
+    } else {
+      setDarkMode(false);
+      document.documentElement.classList.remove('dark');
+    }
   }, []);
 
-  return (
-    <div className="selection:bg-cyan-500/30">
-      <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-6 py-4 ${scrolled ? "max-md:hidden backdrop-blur-sm border-b rounded-2xl border-zinc-800 mx-[20%] mt-2" : "bg-transparent"} ${isMouseOnNav ? `` : `opacity-0`}`}
-      >
-        <div className="max-w-6xl mx-auto flex justify-between items-center">
-          <a href="/" target="_self">
-            <div className="mono font-bold text-lg text-zinc-100 tracking-tighter">
-              VATSAL<span className="text-cyan-500">_</span>
-            </div>
-          </a>
-          <div className="hidden md:flex gap-8 items-center">
-            {["About", "Skills", "Projects", "Philosophy", "Contact"].map(
-              (item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  className="mono text-[11px] uppercase tracking-widest text-zinc-500 hover:text-cyan-400 transition-colors"
-                >
-                  {item}
-                </a>
-              ),
-            )}
-            <a
-              key="Resume"
-              href={`https://iamvatsal.github.io/My-Resume`}
-              target="_blank"
-              className="mono text-[11px] uppercase tracking-widest text-zinc-500 hover:text-cyan-400 transition-colors"
-            >
-              Resume
-            </a>
-          </div>
-        </div>
-      </nav>
+  const toggleDarkMode = () => {
+    setDarkMode(prev => {
+      const next = !prev;
+      if (next) {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('theme', 'light');
+      }
+      return next;
+    });
+  };
 
-      <main className="bg-zinc-950 text-zinc-100">
+  return (
+    <div className={`min-h-screen ${darkMode ? 'bg-[#0b1a2d] text-[#F9F7F7]' : 'bg-[#F9F7F7] text-[#112D4E]'} transition-colors duration-300 font-sans`}>
+      {/* Top Navigation */}
+      <Navbar 
+        darkMode={darkMode}
+        onToggleDarkMode={toggleDarkMode}
+        onOpenResume={() => setIsResumeOpen(true)}
+        scrolled={scrolled}
+      />
+
+      {/* Main Content Sections */}
+      <main>
         <Hero />
-        <About />
+        <MarqueeBanner />
+        <Projects onSelectProject={(project) => setSelectedProject(project)} />
+        <Experience />
         <Skills />
-        <Projects />
+        <FieldNotes onSelectNote={(note) => setSelectedNote(note)} />
         <Philosophy />
-        <Footer />
+        <ContactCTA />
       </main>
 
-      {/* Background elements */}
-      <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden">
-        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-cyan-900/5 blur-[120px] rounded-full"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-blue-900/5 blur-[100px] rounded-full"></div>
+      {/* Footer */}
+      <Footer onOpenResume={() => setIsResumeOpen(true)} />
 
-        {/* Grid pattern overlay */}
-        <div
-          className="absolute inset-0 opacity-[0.015]"
-          style={{
-            backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)",
-            backgroundSize: "40px 40px",
-          }}
-        ></div>
-      </div>
+      {/* Modals */}
+      <ProjectModal 
+        project={selectedProject} 
+        onClose={() => setSelectedProject(null)} 
+      />
+
+      <ResumeModal 
+        isOpen={isResumeOpen} 
+        onClose={() => setIsResumeOpen(false)} 
+      />
+
+      <NoteModal 
+        note={selectedNote} 
+        onClose={() => setSelectedNote(null)} 
+      />
+
+      {/* Subtle Background Pattern */}
+      <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden bg-grid-pattern opacity-60" />
     </div>
   );
-}
+};
+
+export default App;

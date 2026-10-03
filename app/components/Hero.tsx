@@ -1,50 +1,108 @@
 import React from 'react';
-import Image from 'next/image';
+import { USER_INFO } from '../Utils/constants';
+import { ArrowDown, ArrowUpRight } from 'lucide-react';
 
 const Hero: React.FC = () => {
-    return (
-        <div className="min-h-[80vh] flex flex-col justify-center max-w-5xl mx-auto px-3 pt-20 pb-15">
-            <div className="mono text-cyan-500 mb-6 text-sm font-medium">
-                Hello, I am
+  return (
+    <section id="top" className="relative pt-28 pb-16 md:pt-36 md:pb-24 overflow-hidden">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+          
+          {/* Left Vertical Indicator Gutter (Matches Photo) */}
+          <div className="hidden lg:flex lg:col-span-1 flex-col items-center pt-2">
+            <span className="mono text-xs font-semibold text-[#112D4E]/40 dark:text-[#DBE2EF]/40 tracking-wider">
+              01
+            </span>
+            <div className="w-[1px] h-16 bg-[#DBE2EF] dark:bg-[#3F72AF]/30 my-4" />
+            <span 
+              className="mono text-[10px] tracking-widest text-[#112D4E]/40 dark:text-[#DBE2EF]/40 uppercase whitespace-nowrap"
+              style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
+            >
+              BUILD / EXPLAIN / REPEAT
+            </span>
+          </div>
+
+          {/* Center Main Content (Col 1-8 / Col 2-8 on desktop) */}
+          <div className="lg:col-span-7">
+            {/* Status indicator tag */}
+            <div className="inline-flex items-center gap-2 mb-6 text-xs mono text-[#112D4E]/80 dark:text-[#DBE2EF]/90">
+              <span className="w-2 h-2 rounded-full bg-[#3F72AF] animate-pulse" />
+              <span>{USER_INFO.role} — {USER_INFO.tagline}</span>
             </div>
-            <h1 className="text-6xl md:text-8xl font-bold mb-8 tracking-tight text-zinc-100">
-                Vatsal<span className="text-zinc-600">.</span>
+
+            {/* Main Headline */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#112D4E] dark:text-[#F9F7F7] leading-[1.08] mb-8">
+              <span>{USER_INFO.headlineLine1}</span>
+              <br />
+              <span className="inline-flex items-center">
+                <span>{USER_INFO.headlineLine2}</span>
+                <span className="inline-block w-3 md:w-4 h-9 md:h-12 bg-[#3F72AF] ml-1.5 blinking-cursor translate-y-1" />
+              </span>
             </h1>
-            {/* Location */}
-            <div className="mb-2 pb-1 flex items-center gap-2 text-zinc-500 text-sm font-medium">
-                <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="#00B8DB"
-                    viewBox="0 0 16 16"
-                >
-                    <path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m7.5-6.923c-.67.204-1.335.82-1.887 1.855A8 8 0 0 0 5.145 4H7.5zM4.09 4a9.3 9.3 0 0 1 .64-1.539 7 7 0 0 1 .597-.933A7.03 7.03 0 0 0 2.255 4zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a7 7 0 0 0-.656 2.5zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5zM8.5 5v2.5h2.99a12.5 12.5 0 0 0-.337-2.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5zM5.145 12q.208.58.468 1.068c.552 1.035 1.218 1.65 1.887 1.855V12zm.182 2.472a7 7 0 0 1-.597-.933A9.3 9.3 0 0 1 4.09 12H2.255a7 7 0 0 0 3.072 2.472M3.82 11a13.7 13.7 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5zm6.853 3.472A7 7 0 0 0 13.745 12H11.91a9.3 9.3 0 0 1-.64 1.539 7 7 0 0 1-.597.933M8.5 12v2.923c.67-.204 1.335-.82 1.887-1.855q.26-.487.468-1.068zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.7 13.7 0 0 1-.312 2.5m2.802-3.5a7 7 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7 7 0 0 0-3.072-2.472c.218.284.418.598.597.933M10.855 4a8 8 0 0 0-.468-1.068C9.835 1.897 9.17 1.282 8.5 1.077V4z" />
-                </svg>
-                <span>Gujarat, India</span>
-            </div>
-            <p className="text-2xl md:text-3xl text-zinc-400 max-w-2xl leading-relaxed font-light mb-12">
-                Computer Engineering student focused on building{' '}
-                <span className="text-zinc-100">Full-Stack AI, Embedded,</span> and{' '}
-                <span className="text-zinc-100">Systems Software</span>.
+
+            {/* Bio description */}
+            <p className="text-base sm:text-lg text-[#112D4E]/80 dark:text-[#DBE2EF]/90 max-w-xl leading-relaxed mb-10 font-normal">
+              {USER_INFO.bio}
             </p>
-            <div className="flex flex-wrap gap-4">
-                <a
-                    href="#projects"
-                    className="px-6 py-3 bg-zinc-100 text-zinc-950 font-medium rounded hover:bg-cyan-400 transition-colors duration-200"
-                >
-                    View Technical Projects
-                </a>
-                <a
-                    href="https://github.com/IamVatsal"
-                    target="_blank"
-                    className="mono px-6 py-3 border border-zinc-700 text-zinc-300 hover:border-zinc-400 transition-colors duration-200"
-                >
-                    github.iamvatsal
-                </a>
+
+            {/* Action buttons */}
+            <div className="flex flex-wrap items-center gap-4">
+              <a
+                href="#work"
+                className="inline-flex items-center gap-2 px-5 py-3 rounded bg-[#112D4E] text-white dark:bg-[#3F72AF] dark:text-white text-xs mono font-medium hover:bg-[#3F72AF] dark:hover:bg-[#DBE2EF] dark:hover:text-[#112D4E] transition-all duration-200 shadow-sm group"
+              >
+                <span>See the work</span>
+                <ArrowDown className="w-3.5 h-3.5 group-hover:translate-y-0.5 transition-transform" />
+              </a>
+
+              <a
+                href={USER_INFO.githubUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-4 py-3 text-xs mono text-[#112D4E] dark:text-[#F9F7F7] hover:text-[#3F72AF] dark:hover:text-[#DBE2EF] underline decoration-[#DBE2EF] dark:decoration-[#3F72AF]/40 underline-offset-8 transition-colors"
+              >
+                <span>GitHub / IamVatsal</span>
+                <ArrowUpRight className="w-3.5 h-3.5 text-[#3F72AF]" />
+              </a>
             </div>
+          </div>
+
+          {/* Right Signal Card Widget (Matches Photo) */}
+          <div className="lg:col-span-4 lg:pt-4">
+            <div className="rounded-xl border border-[#DBE2EF] dark:border-[#3F72AF]/30 bg-white/70 dark:bg-[#112D4E]/50 backdrop-blur-sm p-6 shadow-sm">
+              <div className="text-[10px] mono uppercase tracking-widest text-[#112D4E]/50 dark:text-[#DBE2EF]/50 mb-2">
+                CURRENT SIGNAL
+              </div>
+              <div className="text-xl font-bold tracking-tight text-[#112D4E] dark:text-[#F9F7F7] mb-1">
+                {USER_INFO.signalFocus}
+              </div>
+              <div className="text-xs text-[#3F72AF] dark:text-[#DBE2EF] font-medium mono mb-6">
+                {USER_INFO.signalAvailability}
+              </div>
+
+              <div className="pt-4 border-t border-[#DBE2EF]/70 dark:border-[#3F72AF]/20">
+                <div className="text-[10px] mono uppercase tracking-widest text-[#112D4E]/50 dark:text-[#DBE2EF]/50 mb-3">
+                  TOOLS I REACH FOR
+                </div>
+                <div className="flex flex-wrap gap-1.5">
+                  {USER_INFO.quickTools.map((tool) => (
+                    <span
+                      key={tool.label}
+                      title={tool.full}
+                      className="px-2.5 py-1 text-xs mono rounded border border-[#DBE2EF] dark:border-[#3F72AF]/30 bg-[#F9F7F7] dark:bg-[#112D4E] text-[#112D4E] dark:text-[#DBE2EF] hover:border-[#3F72AF] hover:text-[#3F72AF] transition-colors cursor-default"
+                    >
+                      {tool.label}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+
         </div>
-    );
+      </div>
+    </section>
+  );
 };
 
 export default Hero;

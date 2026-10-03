@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
-import VantaBackground from './components/VantaBackground';
 
 const geistSans = Geist({
     variable: '--font-geist-sans',
@@ -28,9 +27,8 @@ export default function RootLayout({
           <head>
           </head>
             <body
-                className={`${geistSans.variable} ${geistMono.variable} antialiased vanta-bg`}
+                className={`${geistSans.variable} ${geistMono.variable} bg-[#F9F7F7] text-[#112D4E] antialiased selection:bg-[#3F72AF] selection:text-white transition-colors duration-300`}
             >
-              <VantaBackground />
                 {children}
             </body>
         </html>

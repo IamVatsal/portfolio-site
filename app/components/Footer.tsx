@@ -1,30 +1,125 @@
-
 import React from 'react';
+import { USER_INFO } from '../Utils/constants';
+import { Code2, ArrowUpRight, ArrowDown, ArrowUp } from 'lucide-react';
 
-const Footer: React.FC = () => {
+interface FooterProps {
+  onOpenResume: () => void;
+}
+
+const Footer: React.FC<FooterProps> = ({ onOpenResume }) => {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
-    <footer id="contact" className="py-24 border-t border-zinc-800 bg-zinc-950">
-      <div className="max-w-5xl mx-auto px-6 text-center">
-        <h2 className="text-4xl md:text-5xl font-bold mb-8 text-zinc-100 tracking-tight">Get in touch.</h2>
-        <p className="text-zinc-400 max-w-lg mx-auto mb-12 leading-relaxed">
-          I'm open to conversations about system design, low-level mechanics, or collaborating on technically interesting projects.
-        </p>
+    <footer className="w-full bg-[#F9F7F7] dark:bg-[#0b1a2d] border-t border-[#DBE2EF] dark:border-[#3F72AF]/20 py-16 text-[#112D4E] dark:text-[#DBE2EF] transition-colors">
+      <div className="max-w-6xl mx-auto px-6">
         
-        <div className="flex justify-center gap-8 mb-16">
-          <a href="mailto:vatsalpatel0609@gmail.com" className="mono text-zinc-300 hover:text-cyan-400 transition-colors">
-            Email
-          </a>
-          <a href="https://github.com/IamVatsal" target="_blank" className="mono text-zinc-300 hover:text-cyan-400 transition-colors">
-            GitHub
-          </a>
-          <a href="https://www.linkedin.com/in/vatsal-patel0609/" target="_blank" className="mono text-zinc-300 hover:text-cyan-400 transition-colors">
-            LinkedIn
-          </a>
+        {/* Main Footer Row */}
+        <div className="flex flex-col md:flex-row justify-between items-start gap-12 mb-16">
+          
+          {/* Left Brand Col */}
+          <div className="max-w-sm">
+            <a 
+              href="#top" 
+              className="flex items-center gap-2 group text-base font-bold tracking-tight text-[#112D4E] dark:text-[#F9F7F7] mb-4"
+            >
+              <div className="w-7 h-7 rounded border border-[#3F72AF]/40 bg-[#DBE2EF]/30 dark:bg-[#112D4E] flex items-center justify-center text-[#3F72AF] group-hover:bg-[#3F72AF] group-hover:text-white transition-colors">
+                <Code2 className="w-4 h-4" />
+              </div>
+              <span className="mono tracking-tight text-sm font-semibold">
+                {USER_INFO.brandName}
+              </span>
+            </a>
+            <p className="text-xs sm:text-sm text-[#112D4E]/70 dark:text-[#DBE2EF]/70 leading-relaxed font-normal">
+              Software engineer building close-to-the-metal software for curious people.
+            </p>
+          </div>
+
+          {/* Right Navigation & Download Cols */}
+          <div className="flex flex-wrap gap-12 sm:gap-20">
+            {/* Elsewhere */}
+            <div>
+              <div className="text-[10px] mono uppercase tracking-widest text-[#112D4E]/40 dark:text-[#DBE2EF]/40 font-semibold mb-3">
+                ELSEWHERE
+              </div>
+              <ul className="space-y-2 text-xs mono">
+                <li>
+                  <a
+                    href={USER_INFO.githubUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-[#112D4E]/80 dark:text-[#DBE2EF]/80 hover:text-[#3F72AF] dark:hover:text-white transition-colors"
+                  >
+                    <span>GitHub</span>
+                    <ArrowUpRight className="w-3 h-3 text-[#3F72AF]" />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={`mailto:${USER_INFO.email}`}
+                    className="inline-flex items-center gap-1 text-[#112D4E]/80 dark:text-[#DBE2EF]/80 hover:text-[#3F72AF] dark:hover:text-white transition-colors"
+                  >
+                    <span>Email</span>
+                    <ArrowUpRight className="w-3 h-3 text-[#3F72AF]" />
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={USER_INFO.siteUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-[#112D4E]/80 dark:text-[#DBE2EF]/80 hover:text-[#3F72AF] dark:hover:text-white transition-colors"
+                  >
+                    <span>Source Code</span>
+                    <ArrowUpRight className="w-3 h-3 text-[#3F72AF]" />
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Download */}
+            <div>
+              <div className="text-[10px] mono uppercase tracking-widest text-[#112D4E]/40 dark:text-[#DBE2EF]/40 font-semibold mb-3">
+                DOWNLOAD
+              </div>
+              <ul className="space-y-2 text-xs mono">
+                <li>
+                  <button
+                    onClick={onOpenResume}
+                    className="inline-flex items-center gap-1 text-[#112D4E]/80 dark:text-[#DBE2EF]/80 hover:text-[#3F72AF] dark:hover:text-white transition-colors text-left"
+                  >
+                    <span>Resume PDF</span>
+                    <ArrowDown className="w-3 h-3 text-[#3F72AF]" />
+                  </button>
+                </li>
+                <li>
+                  <button
+                    onClick={scrollToTop}
+                    className="inline-flex items-center gap-1 text-[#112D4E]/80 dark:text-[#DBE2EF]/80 hover:text-[#3F72AF] dark:hover:text-white transition-colors text-left"
+                  >
+                    <span>Back to top</span>
+                    <ArrowUp className="w-3 h-3 text-[#3F72AF]" />
+                  </button>
+                </li>
+              </ul>
+            </div>
+          </div>
+
         </div>
-        
-        <div className="mono text-[10px] text-zinc-600 uppercase tracking-widest">
-          Designed & Built by Vatsal &copy; {new Date().getFullYear()} / No Fluff. Pure Engineering.
+
+        {/* Bottom Line */}
+        <div className="pt-8 border-t border-[#DBE2EF] dark:border-[#3F72AF]/20 flex flex-col sm:flex-row justify-between items-center gap-4 text-[11px] mono text-[#112D4E]/50 dark:text-[#DBE2EF]/50">
+          <div>
+            © {new Date().getFullYear()} {USER_INFO.name.toUpperCase()}
+          </div>
+          <div className="flex items-center gap-2">
+            <span>MADE WITH CURIOSITY</span>
+            <span>/</span>
+            <span>23.5901° N</span>
+          </div>
         </div>
+
       </div>
     </footer>
   );

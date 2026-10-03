@@ -1,134 +1,175 @@
-
-import React, { useState } from 'react';
-import Section from './Section';
+import React, { useEffect, useState } from 'react';
+import { Project } from '../Utils/types';
 import { PROJECTS } from '../Utils/constants';
+import { ArrowUpRight, Layers, Eye } from 'lucide-react';
 
-const Projects: React.FC = () => {
-  const [hoveredProject, setHoveredProject] = useState<string | null>(null);
+interface ProjectsProps {
+  onSelectProject: (project: Project) => void;
+}
+
+const Projects: React.FC<ProjectsProps> = ({ onSelectProject }) => {
+  const [filter, setFilter] = useState<'all' | 'hardware' | 'ai' | 'systems' | 'web'>('all');
+  const [totalCountOfProjects, setTotalCountOfProjects] = useState(PROJECTS.length);
+  const [selectedCountOfProjects, setSelectedCountOfProjects] = useState(PROJECTS.length);
+  const filteredProjects = filter === 'all' 
+    ? PROJECTS 
+    : PROJECTS.filter(p => p.category === filter);
+
+  useEffect(() => {
+    setSelectedCountOfProjects(filteredProjects.length);
+  }, [filteredProjects]);
 
   return (
-    <Section id="projects" title="03. Selected Projects">
-      <div className="space-y-12">
-        {PROJECTS.map((project, idx) => (
-          <div 
-            key={project.id} 
-            className="group relative border border-zinc-800 bg-zinc-900/10 transition-all duration-500 hover:border-zinc-700 overflow-hidden"
-            onMouseEnter={() => setHoveredProject(project.id)}
-            onMouseLeave={() => setHoveredProject(null)}
-          >
-            {/* Project Entry Header */}
-            <div className="p-8 lg:p-10">
-              <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-                
-                {/* Information Column */}
-                <div className="lg:col-span-7 space-y-8">
-                  <div className="space-y-4">
-                    <div className="flex items-center gap-4">
-                      <span className="mono text-[10px] text-cyan-500">[{String(idx + 1).padStart(2, '0')}]</span>
-                      <a href={project.githubUrl} target="_blank" className="z-10 flex-1">
-                      <h3 
-                        className="text-3xl font-bold text-zinc-100 tracking-tight cursor-default transition-colors hover:text-cyan-400"
-                      >
-                        {project.title}
-                      </h3>
-                      </a>
-                    </div>
-                    
-                    <div className="flex flex-wrap gap-2">
-                      {project.tech.map(t => (
-                        <span key={t} className="mono text-[12px] px-2 py-0.5 border border-zinc-800 text-zinc-500 rounded lowercase hover:border-cyan-400 hover:text-cyan-400 transition-colors hover:scale-110  hover:duration-300">
-                          #{t.replace(/\s+/g, '')}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
+    <section id="work" className="py-20 md:py-28 relative">
+      <div className="max-w-6xl mx-auto px-6">
+        
+        {/* Section Header */}
+        <div className="mb-12">
+          <div className="flex items-center justify-between mb-3">
+            <div className="flex items-center gap-3">
+              <span className="mono text-xs font-semibold text-[#3F72AF] tracking-wider uppercase">
+                02 — SELECTED WORK
+              </span>
+            </div>
+            <span className="mono text-xs text-[#112D4E]/50 dark:text-[#DBE2EF]/50 tracking-widest">
+              {selectedCountOfProjects} / {totalCountOfProjects}
+            </span>
+          </div>
 
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-6 border-t border-zinc-800/50">
-                    <div>
-                      <h4 className="mono text-[10px] text-zinc-600 uppercase tracking-widest mb-3">System Context</h4>
-                      <p className="text-zinc-400 text-sm leading-relaxed">
-                        {project.problem}
-                      </p>
-                    </div>
-                    <div>
-                      <h4 className="mono text-[10px] text-zinc-600 uppercase tracking-widest mb-3">Architectural Solve</h4>
-                      <p className="text-zinc-300 text-sm leading-relaxed">
-                        {project.solution}
-                      </p>
-                    </div>
-                  </div>
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 pb-6 border-b border-[#DBE2EF] dark:border-[#3F72AF]/20">
+            <div>
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#112D4E] dark:text-[#F9F7F7] mb-3">
+                Projects with receipts.
+              </h2>
+              <p className="text-sm sm:text-base text-[#112D4E]/70 dark:text-[#DBE2EF]/80 max-w-xl">
+                Six experiments across hardware, web, AI, and the beautifully low-level bits in between.
+              </p>
+            </div>
 
-                  <div className="flex items-center gap-4 pt-4">
-                    <a 
-                      href={project.githubUrl} 
-                      target="_blank"
-                      className="group/link flex items-center gap-2 mono text-[10px] text-zinc-400 hover:text-cyan-400 transition-colors"
-                    >
-                      <span className="border-b border-zinc-800 group-hover/link:border-cyan-400 py-1 uppercase tracking-widest">
-                        View_Code
-                      </span>
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover/link:translate-x-1 transition-transform">
-                        <path d="M5 12h14M12 5l7 7-7 7"/>
-                      </svg>
-                    </a>
-                    {project.link && (
-                      <a
-                        href={project.link}
-                        target="_blank"
-                        className="group/link flex items-center gap-2 mono text-[10px] text-zinc-400 hover:text-cyan-400 transition-colors"
-                      >
-                        <span className="border-b border-zinc-800 group-hover/link:border-cyan-400 py-1 uppercase tracking-widest">
-                          Launch_Demo
-                        </span>
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="group-hover/link:translate-x-1 transition-transform">
-                          <path d="M5 12h14M12 5l7 7-7 7"/>
-                        </svg>
-                      </a>
-                    )}
-                  </div>
-                </div>
-
-                {/* Technical Preview Column - 16:9 Aspect */}
-                <div className="lg:col-span-5 relative">
-                  <div className="aspect-video w-full bg-zinc-950 border border-zinc-800 relative overflow-hidden group-hover:border-zinc-600 transition-colors">
-                    {/* Placeholder Grid */}
-                    <div className="absolute inset-0 opacity-[0.05]" style={{ backgroundImage: 'linear-gradient(to right, #ffffff 1px, transparent 1px), linear-gradient(to bottom, #ffffff 1px, transparent 1px)', backgroundSize: '20px 20px' }}></div>
-                    
-                    {/* The Image (Appears on Hover) */}
-                    <a href={project.githubUrl} target="_blank" className="z-10 absolute inset-0">
-                    <div className={`absolute inset-0 transition-all duration-700 ease-in-out ${hoveredProject === project.id ? 'opacity-100 scale-100 filter-none' : 'opacity-100 scale-110 filter grayscale contrast-150 brightness-75'}`}>
-                      <img 
-                        src={project.imageUrl} 
-                        alt={project.title}
-                        className="w-full h-full object-cover"
-                      />
-                      <div className="absolute inset-0 bg-cyan-900/20 mix-blend-overlay"></div>
-                      
-                      {/* Scanline Effect */}
-                      <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.1)_50%),linear-gradient(90deg,rgba(255,0,0,0.02),rgba(0,255,0,0.01),rgba(0,0,255,0.02))] z-20 bg-[length:100%_2px,3px_100%]"></div>
-                    </div>
-                    </a>
-                  </div>
-                  
-                  {/* Insight Metadata below image */}
-                  <div className="mt-6 flex gap-6">
-                    <div className="flex-1">
-                      <h5 className="mono text-[8px] text-zinc-600 uppercase mb-1">Impact</h5>
-                      <p className="text-zinc-500 text-[12px] leading-tight font-light">{project.impact}</p>
-                    </div>
-                    <div className="flex-1">
-                      <h5 className="mono text-[8px] text-zinc-600 uppercase mb-1">Observation</h5>
-                      <p className="text-zinc-500 text-[12px] leading-tight font-light">{project.lessons}</p>
-                    </div>
-                  </div>
-                </div>
-
-              </div>
+            {/* Interactive Filters (Buttons/Tabs) */}
+            <div className="flex flex-wrap items-center gap-1.5 p-1 rounded-lg bg-[#DBE2EF]/50 dark:bg-[#112D4E]/60 border border-[#DBE2EF] dark:border-[#3F72AF]/30">
+              <button
+                onClick={() => setFilter('all')}
+                className={`px-3 py-1.5 text-xs mono rounded-md transition-all ${
+                  filter === 'all'
+                    ? 'bg-white dark:bg-[#3F72AF] text-[#112D4E] dark:text-white shadow-sm font-semibold'
+                    : 'text-[#112D4E]/70 dark:text-[#DBE2EF]/70 hover:text-[#112D4E] dark:hover:text-white'
+                }`}
+              >
+                All (6)
+              </button>
+              <button
+                onClick={() => setFilter('hardware')}
+                className={`px-3 py-1.5 text-xs mono rounded-md transition-all ${
+                  filter === 'hardware'
+                    ? 'bg-white dark:bg-[#3F72AF] text-[#112D4E] dark:text-white shadow-sm font-semibold'
+                    : 'text-[#112D4E]/70 dark:text-[#DBE2EF]/70 hover:text-[#112D4E] dark:hover:text-white'
+                }`}
+              >
+                Hardware & IoT
+              </button>
+              <button
+                onClick={() => setFilter('ai')}
+                className={`px-3 py-1.5 text-xs mono rounded-md transition-all ${
+                  filter === 'ai'
+                    ? 'bg-white dark:bg-[#3F72AF] text-[#112D4E] dark:text-white shadow-sm font-semibold'
+                    : 'text-[#112D4E]/70 dark:text-[#DBE2EF]/70 hover:text-[#112D4E] dark:hover:text-white'
+                }`}
+              >
+                AI & ML
+              </button>
+              <button
+                onClick={() => setFilter('systems')}
+                className={`px-3 py-1.5 text-xs mono rounded-md transition-all ${
+                  filter === 'systems'
+                    ? 'bg-white dark:bg-[#3F72AF] text-[#112D4E] dark:text-white shadow-sm font-semibold'
+                    : 'text-[#112D4E]/70 dark:text-[#DBE2EF]/70 hover:text-[#112D4E] dark:hover:text-white'
+                }`}
+              >
+                Systems & Play
+              </button>
+              <button
+                onClick={() => setFilter('web')}
+                className={`px-3 py-1.5 text-xs mono rounded-md transition-all ${
+                  filter === 'web'
+                    ? 'bg-white dark:bg-[#3F72AF] text-[#112D4E] dark:text-white shadow-sm font-semibold'
+                    : 'text-[#112D4E]/70 dark:text-[#DBE2EF]/70 hover:text-[#112D4E] dark:hover:text-white'
+                }`}
+              >
+                Web & Cloud
+              </button>
             </div>
           </div>
-        ))}
+        </div>
+
+        {/* 2-Column Grid Matching the Photo */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {filteredProjects.map((project) => (
+            <div
+              key={project.id}
+              onClick={() => onSelectProject(project)}
+              className="group relative rounded-xl border border-[#DBE2EF] dark:border-[#3F72AF]/30 bg-[#DBE2EF]/30 dark:bg-[#112D4E]/40 hover:bg-[#DBE2EF]/50 dark:hover:bg-[#112D4E]/60 p-7 flex flex-col justify-between cursor-pointer subtle-card overflow-hidden"
+            >
+              {/* Large Faded Index Number in Background (Matches Photo) */}
+              <div 
+                className="absolute top-4 right-6 text-7xl font-extrabold mono text-[#3F72AF]/15 dark:text-[#DBE2EF]/10 select-none pointer-events-none transition-transform duration-300 group-hover:scale-105"
+              >
+                {project.number}
+              </div>
+
+              <div>
+                {/* Top Kicker */}
+                <div className="mono text-[11px] font-semibold text-[#3F72AF] dark:text-[#DBE2EF]/80 uppercase tracking-widest mb-4">
+                  PROJECT / {project.number}
+                </div>
+
+                {/* Project Title */}
+                <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-[#112D4E] dark:text-[#F9F7F7] mb-3 group-hover:text-[#3F72AF] dark:group-hover:text-white transition-colors pr-12">
+                  {project.title}
+                </h3>
+
+                {/* Project Summary */}
+                <p className="text-xs sm:text-sm text-[#112D4E]/80 dark:text-[#DBE2EF]/80 leading-relaxed mb-6">
+                  {project.summary}
+                </p>
+
+                {/* Tech Chips */}
+                <div className="flex flex-wrap gap-1.5 mb-8">
+                  {project.tech.map((t) => (
+                    <span
+                      key={t}
+                      className="px-2 py-0.5 text-[11px] mono rounded border border-[#DBE2EF] dark:border-[#3F72AF]/40 bg-white/70 dark:bg-[#112D4E]/80 text-[#112D4E]/80 dark:text-[#DBE2EF]"
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
+              {/* Bottom Footer Row */}
+              <div className="pt-4 border-t border-[#DBE2EF]/80 dark:border-[#3F72AF]/20 flex items-center justify-between text-xs mono text-[#112D4E]/60 dark:text-[#DBE2EF]/60">
+                <span className="uppercase tracking-wider font-semibold text-[#112D4E]/70 dark:text-[#DBE2EF]/70">
+                  {project.tagline}
+                </span>
+
+                <div className="flex items-center gap-3">
+                  <span className="inline-flex items-center gap-1 hover:text-[#3F72AF] dark:hover:text-white transition-colors">
+                    Repo
+                    <ArrowUpRight className="w-3 h-3 text-[#3F72AF]" />
+                  </span>
+                  <span className="text-[#DBE2EF] dark:text-[#3F72AF]/40">/</span>
+                  <span className="inline-flex items-center gap-1 text-[#3F72AF] dark:text-[#DBE2EF] font-medium group-hover:underline">
+                    <Eye className="w-3 h-3" />
+                    Details
+                  </span>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
       </div>
-    </Section>
+    </section>
   );
 };
 
